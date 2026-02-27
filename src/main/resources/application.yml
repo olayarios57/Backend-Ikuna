@@ -40,9 +40,7 @@ cors:
   allowed-origins:
     - "http://localhost:5173"
     - "http://localhost:3000"
-    # Dominios de Vercel
-    - "https://frontend-colectivo-ikuna-phi.vercel.app"
-    - "https://frontend-colectivo-ikuna-5e8b90tvf-olayarios57-8198s-projects.vercel.app"
+    - "https://frontend-colectivo-ikuna-phi.vercel.app" 
   allowed-methods:
     - GET
     - POST
