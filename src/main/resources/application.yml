@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: ikuna-backend
+
+  # CONFIGURACIÓN BASE DE DATOS (SmarterASP + Render)
+  datasource:
+    # URL configurada con tu host real: mysql8002.site4now.net
+    url: jdbc:mysql://${DB_HOST:mysql8002.site4now.net}:${DB_PORT:3306}/${DB_NAME:db_ac5fd8_ikunabd}
+    username: ${DB_USER:ac5fd8_ikunabd}
+    password: ${DB_PASSWORD:rootIkuna25.}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      max-lifetime: 600000
+      connection-timeout: 30000
+
+  # JPA & HIBERNATE
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        # IMPORTANTE: Eliminamos la línea 'dialect' específica.
+        # Hibernate detectará que es MySQL automáticamente.
+        # Si insiste en pedir uno, usa: org.hibernate.dialect.MySQLDialect
+
+  flyway:
+    enabled: false
+
+ikuna:
+  security:
+    jwt-secret: ${JWT_SECRET:UnaClaveSuperSecretaParaFirmarLosTokensDelColectivoIkuna2024}
+    jwt-expiration-ms: 86400000
+
+cors:
+  allowed-origins:
+    - "http://localhost:5173"
+    - "http://localhost:3000"
+    # Dominios de Vercel
+    - "https://frontend-colectivo-ikuna-phi.vercel.app"
+    - "https://frontend-colectivo-ikuna-5e8b90tvf-olayarios57-8198s-projects.vercel.app"
+  allowed-methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true
+
+server:
+  port: 8080
